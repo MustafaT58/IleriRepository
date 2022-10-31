@@ -25,10 +25,6 @@ namespace IleriRepository.Core
             return Set().ToList();
         }
 
-        public void Save()
-        {
-            _db.SaveChanges();
-        }
 
         public DbSet<T> Set()
         {
@@ -47,11 +43,11 @@ namespace IleriRepository.Core
             }
         }
 
-        public bool Delete(int Id)
+        public bool Delete(T entity)
         {
             try
             {
-                Set().Remove(Find(Id));
+                Set().Remove(entity);
                 //var ent=Find(Id);
                 //Set().Remove(ent);
                 return true;

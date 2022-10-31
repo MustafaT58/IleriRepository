@@ -23,6 +23,36 @@ namespace IleriRepository.Data
         public Grade Grade { get; set; }
         [ForeignKey("DepartmentId")]
         public Department Department { get; set; }
+        public int GetAge()
+        {
+            DateTime today = DateTime.Now;
+            int age = today.Year - DateOfBirth.Year;
+            DateTime birtDay=DateOfBirth.AddYears(age);
+            if (today > birtDay)
+                age++;
+            return age;
+        }
+        public string FullName()
+        {
+            //if (Gender == 'E')
+            //{
+            //    return $"Sn. Bay {Name}  {SurName}";
+            //}
+            //else return $"Sn. Bayan {Name}  {SurName}";
+
+            return Gender == 'E' ? $"Sn. Bay {Name}  {SurName}" : $"Sn. Bayan {Name}  {SurName}";
+        }
+        public List<string> GetAdress()
+        {
+            List<string> adress = new List<string>();
+            adress.Add(FullName());
+            adress.Add(Street);
+            adress.Add(Avenue);
+            adress.Add(No.ToString());
+            adress.Add(County.CountyName+"/"+County.City.CityName);
+            return adress;
+
+        }
 
     }
 }

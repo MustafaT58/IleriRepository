@@ -7,9 +7,8 @@ namespace IleriRepository.Core
         public List<T> List();
         public T Find(int Id);
         public bool Update(T entity);
-        public bool Delete(int Id);
+        public bool Delete(T entity);
         public bool Add(T entity);
         public DbSet<T> Set();
-        public void Save();
     }
 }
